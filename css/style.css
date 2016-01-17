@@ -1,0 +1,79 @@
+body {
+    background: #EFEFEF;
+    color: #444;
+}
+
+
+.title {
+    margin: 30px 0 0;
+    line-height: 1em;
+}
+.subtitle {
+    margin-bottom: 12px;
+    color: #777;
+}
+
+.vote {
+    padding: 8px;
+    background: #DDDDDD;
+}
+.vote.even {
+    background: #E8E8E8;
+}
+
+.vote .description,
+.vote .detail {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.vote .description {
+    width: 69%;
+}
+
+.vote .detail {
+    width: 30%;
+}
+
+.vote .bar {
+    width: 100%;
+    white-space: nowrap;
+}
+.vote .bar div {
+    display: inline-block;
+    height: 12px;
+}
+
+.vote .bar .no {
+    background: red;
+}
+
+.vote .bar .abstain {
+    background: orange;
+}
+.vote .bar .yes {
+    background: green;
+}
+
+.pager-container {
+    text-align: center;
+}
+
+.pager-container h4 {
+    display: inline-block;
+}
+.pager {
+    cursor:pointer;
+}
+
+.pager.prev {
+    float: left;
+}
+
+.pager.next {
+    float: right;
+}
+
+.pager:hover {
+    color: blue;
+}
