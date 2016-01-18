@@ -32,7 +32,7 @@
           <div ng-repeat="vote in votes">
             <div ng-controller="voteDetailController" class="vote"  ng-class-even="'even'">
               <div class="description">
-                {{organization.attributes.name}} - {{vote.attributes.motion_text}}, 
+                {{organization.attributes.name}} - {{vote.attributes.motion_text}}
                 
                 <span ng-if="vote.attributes.result == 'pass'" class="fa fa-check" title="Pass"></span>
                 <br>
