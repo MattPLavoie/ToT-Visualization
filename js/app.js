@@ -49,8 +49,11 @@ function appController($scope, $http) {
 
 function billController($scope) {
   var length = $scope.bill.attributes.actions.length;
-  $scope.failed =  $scope.bill.attributes.actions[length - 1].classification.toString() == "failure";
+  var finalAction = $scope.bill.attributes.actions[length - 1];
+  $scope.failed =  finalAction.classification.toString() == "failure";
+  $scope.enrolled = finalAction.description.indexOf('enrolled') > -1;
 }
+
 
 function voteController($scope, $http) {
 

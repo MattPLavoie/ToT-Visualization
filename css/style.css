@@ -78,8 +78,13 @@ body {
     color: blue;
 }
 
-.failed {
+.failed,
+.enrolled {
   font-size: 16px;
   color: red;
   padding: 6px;
+}
+
+.enrolled {
+  color: green;
 }
