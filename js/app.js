@@ -16,6 +16,7 @@ var fetch = function($http, requestUrl, success) {
 
 angular.module('myApp', [])
     .controller('appController', ['$scope', '$http', appController])
+    .controller('billController', ['$scope', billController])
     .controller('voteController', ['$scope', '$http', voteController])
     .controller('voteDetailController', ['$scope', '$http', voteDetailController]);
 
@@ -44,6 +45,11 @@ function appController($scope, $http) {
     $scope.next = function() {
         fetchBills($scope.meta.pagination.page + 1);
     }
+}
+
+function billController($scope) {
+  var length = $scope.bill.attributes.actions.length;
+  $scope.failed =  $scope.bill.attributes.actions[length - 1].classification.toString() == "failure";
 }
 
 function voteController($scope, $http) {

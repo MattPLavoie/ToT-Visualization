@@ -21,47 +21,54 @@
         <h4>{{meta.pagination.page}} / {{meta.pagination.pages}}</h4>
         <h4 ng-if="meta.pagination.page < meta.pagination.pages" ng-click="next()" class="pager next">Next <span class="fa fa-chevron-right"></span></h4>
       </div>
-      
+
       <div ng-repeat="bill in bills" class="container">
         <h3 class="title"><a ng-href="{{bill.attributes.sources[0].url}}" target="_blank">{{bill.attributes.title}}</a></h3>
         <div ng-if="bill.attributes.subject.length" class="subtitle"><em>Subject:</em> <span ng-repeat="subject in bill.attributes.subject">{{subject}}<span ng-if="!$last">,</span> </span></div>
         <div ng-if="!bill.attributes.subject.length" class="subtitle"><em>No Subject</em></div>
-        
+
         <div ng-controller="voteController">
-          
+
           <div ng-repeat="vote in votes">
             <div ng-controller="voteDetailController" class="vote"  ng-class-even="'even'">
               <div class="description">
                 {{organization.attributes.name}} - {{vote.attributes.motion_text}}
-                
+
                 <span ng-if="vote.attributes.result == 'pass'" class="fa fa-check" title="Pass"></span>
                 <br>
                 {{vote.attributes.start_date.replace(" ","T") | date: 'longDate'}}
               </div>
-              
+
               <div class="detail">
                 No: {{voteTotals.no || '0'}}, Other/Abstain: {{voteTotals.other + voteTotals['not voting'] || '0'}}, Yes: {{voteTotals.yes || '0'}}
                 <div class="bar">
-                  {{pyes}}
                   <div class="no" ng-style="{'width': votePercentages.no}"></div><div class="abstain"  ng-style="{'width':votePercentages.other}"></div><div class="abstain"  ng-style="{'width':votePercentages['not voting']}"></div><div class="yes"  ng-style="{'width':votePercentages.yes}"></div>
                 </div>
               </div>
             </div>
-            
+
           </div>
-          
-          <div ng-if="!votes.length"><em>Not yet voted on.</em></div>
-          
+
+
+          <div ng-controller="billController">
+
+            <div ng-if="!votes.length && !failed"><em>Not yet voted on.</em></div>
+            <div ng-if="failed" class="failed"><i class="fa fa-times"></i> This bill has failed.</div>
+          </div>
+
+
         </div>
+
+
       </div>
-      
+
       <div class="pager-container">
         <h4 ng-if="meta.pagination.page > 1" ng-click="previous()" class="pager prev"><span class="fa fa-chevron-left"></span> Previous</h4>
         <h4>{{meta.pagination.page}} / {{meta.pagination.pages}}</h4>
         <h4 ng-if="meta.pagination.page < meta.pagination.pages" ng-click="next()" class="pager next">Next <span class="fa fa-chevron-right"></span></h4>
       </div>
-      
-      
+
+
     </div>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
